@@ -268,10 +268,10 @@ class _HeartBPPView extends State<HeartBPMDialog> {
           ? Column(
               children: [
                 Container(
-                  constraints: BoxConstraints.tightFor(width: 100, height: 130),
+                  constraints: BoxConstraints.tightFor(width: MediaQuery.of(context).size.width,height: MediaQuery.of(context).size.height*0.27),
                   child: _controller!.buildPreview(),
                 ),
-                Text(currentValue.toStringAsFixed(0)),
+//                 Text(currentValue.toStringAsFixed(0)),
                 widget.child == null ? SizedBox() : widget.child!,
               ],
             )
