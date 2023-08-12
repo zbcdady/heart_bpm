@@ -151,7 +151,7 @@ class _HeartBPPView extends State<HeartBPMDialog> {
       List<CameraDescription> _cameras = await availableCameras();
       // 2. assign the preferred camera with low resolution and disable audio
       _controller = CameraController(_cameras.first, ResolutionPreset.low,
-          enableAudio: false, imageFormatGroup: ImageFormatGroup.yuv420);
+          enableAudio: false, imageFormatGroup: ImageFormatGroup.bgra8888);
 
       // 3. initialize the camera
       await _controller!.initialize();
