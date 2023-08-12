@@ -189,9 +189,17 @@ class _HeartBPPView extends State<HeartBPMDialog> {
     // });
 
     // get the average value of the image
-    double _avg =
-        image.planes.first.bytes.reduce((value, element) => value + element) /
-            image.planes.first.bytes.length;
+    // 计算每个plane的平均值
+  var planeAvgs = image.planes.map((plane) {
+    return plane.bytes.reduce((value, element) => value + element) / plane.bytes.length;
+  }).toList();
+
+  // 计算所有plane的平均值作为图像整体的平均值
+  double _avg = planeAvgs.reduce((value, element) => value + element) / planeAvgs.length;
+
+  // 其他代码保持不变
+  measureWindow.removeAt(0);
+  measureWindow.add(SensorValue(time: DateTime.now(), value: _avg));
 
     measureWindow.removeAt(0);
     measureWindow.add(SensorValue(time: DateTime.now(), value: _avg));
